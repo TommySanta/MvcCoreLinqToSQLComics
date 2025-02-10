@@ -1,0 +1,29 @@
+﻿@model Comic
+
+@{
+	List<string> comicsNombre = ViewData["COMICSNOMBRE"] as List<string>;
+}
+<form method="post">
+	<label>Comics: </label>
+	<select name="nombre" class="form-control">
+		@foreach (string nombre in comicsNombre)
+		{
+			<option value="@nombre">@nombre</option>
+		}
+	</select>
+	<button class="btn btn-info">
+		Consultar comic
+	</button>
+</form>
+
+@if (Model != null)
+{
+	<div class="mt-4 card">
+		<div class="card-body">
+			<h5 class="card-title">Nombre del comic: @Model.Nombre</h5>
+			<img src="@Model.Imagen" class="card-img-top" alt="@Model.Nombre">
+			<p class="card-text">ID : @Model.IdComic</p>
+			<p class="card-text">Descripcion: @Model.Descripcion</p>
+		</div>
+	</div>
+}
